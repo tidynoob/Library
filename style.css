@@ -59,6 +59,7 @@ table {
 
 :root {
     --darkest: #171717;
+    --very-dark: #262626;
     --dark:#404040;
     --med: #737373;
     --med-light: #a3a3a3;
@@ -208,14 +209,14 @@ label, button {
     color: var(--lightest);
     font-size: var(--font-md);
     font-weight: bold;
-    background-color: var(--darkest);
-    border-color: var(--darkest);
+    background-color: var(--very-dark);
+    border-color: var(--very-dark);
     border-radius: var(--border-radius-std);
     border-style: solid;
 }
 
 .form-grid > button[type="submit"]:hover {
-    border-color: var(--darkest);
+    border-color: var(--dark);
     background-color: var(--dark);
     border-style: outset
 }
