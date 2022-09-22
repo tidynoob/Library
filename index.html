@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,33 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="header">
-        <h1>Library</h1>
-        <button>Add Book</button>
+        <img src="./images/bookshelf.svg" alt="">
+        <h1>LIBRARY</h1>
+        <!-- <button id="add-book">Add Book</button> -->
+    </div>
+    <div class="form-window">
+        <form>
+            <div class="form-grid">
+                <h2>Book Details</h2>
+                <label for="title">Title</label>
+                <input id="title" type="text">
+                <label for="author">Author</label>
+                <input id="author" type="text">
+                <label for="pages">Pages</label>
+                <input id="pages" type="number">
+                <label for="read">Read?</label>
+                <input id="read" type="checkbox">
+                <button type="submit" id="submit-book">Submit Book</button>
+            </div>
+        </form>
+
     </div>
     <div class="main"></div>
-    
+
 </body>
+
 </html>
 <script src="script.js"></script>

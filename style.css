@@ -1,0 +1,227 @@
+/* CSS Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+/* article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} */
+
+/* ----------------------------------------- */
+
+
+@font-face {
+    font-family: Open-Sans;
+    src: url(./fonts/Open-Sans.ttf);
+}
+
+@font-face {
+    font-family: Alegreya;
+    src: url(./fonts/Alegreya.ttf);
+}
+
+:root {
+    --darkest: #171717;
+    --dark:#404040;
+    --med: #737373;
+    --med-light: #a3a3a3;
+    --light: #e5e5e5;
+    --lightest: #fafafa;
+
+    --shadow: 1px 1px 3px rgb(0,0,0,.15);
+    --border-radius-std: 5px;
+
+    --spacing-lg: 1rem;
+    --spacing-xl: 2rem;
+    --spacing-md: 15px;
+    --spacing-sm: 10px;
+    --spacing-xs: 5px;
+
+    --font-xl: 24px;
+    --font-lg: 20px;
+    --font-md: 16px;
+
+    --input-height: calc(var(--font-xl) + var(--spacing-xs) + 1px);
+
+    font-family: Open-Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: var(--font-md);
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100%;
+    background-color: var(--light);
+}
+
+.header {
+    grid-row: 1 / span 1;
+
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+
+    background-color: var(--lightest);
+    padding: var(--spacing-xl) 0 var(--spacing-xl) var(--spacing-xl);
+    z-index: 1;
+    box-shadow: 0px 3px 2px rgb(0,0,0,.10);
+    
+}
+
+.header > img {
+    shape-rendering: geometricPrecision;
+    /* filter: brightness(0) invert(1); */
+    height: 85px;
+    width: 85px;
+
+}
+
+.header > h1 {
+    font-family: Alegreya;
+    color: var(--darkest);
+    letter-spacing: 3px;
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.main {
+    background-color: var(--light);
+}
+
+label, button {
+    display:block;
+}
+
+.form-window {
+    /* display: none; */
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: var(--med-light);
+    border: 2px solid var(--darkest);
+    border-radius: var(--border-radius-std);
+    box-shadow: 3px 3px 5px rgb(0,0,0,.15);
+
+    padding: var(--spacing-lg);
+}
+
+.form-window .form-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-md) var(--spacing-sm);
+    align-items: center;
+}
+
+.form-grid > h2 {
+    grid-column: 1 / span 2;
+
+    text-align: center;
+    font-size: var(--font-xl);
+    font-weight: bold;
+}
+
+.form-grid > label {
+    grid-column: 1 / span 1;
+
+    font-size:var(--font-lg);
+    text-align: end;
+}
+
+.form-grid > input {
+    grid-column: 2 / span 1;
+
+    font-size: var(--font-md);
+
+    height: var(--input-height);
+    width: 200px;
+    padding: var(--spacing-xs);
+    border-color: var(--dark);
+    border-radius: var(--border-radius-std);
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-grid > input:focus {
+    border: 2px solid var(--darkest);
+    box-shadow: var(--shadow);
+    height: calc(var(--input-height));
+}
+
+.form-grid > input[type="checkbox"] {
+    justify-self: start;
+    height: var(--input-height);
+    width: var(--input-height);
+    accent-color: var(--dark);
+
+}
+
+.form-grid > button[type="submit"] {
+    grid-column: 1 / span 2;
+
+    width: 50%;
+    height: 40px;
+    justify-self: center;
+
+    color: var(--lightest);
+    font-size: var(--font-md);
+    font-weight: bold;
+    background-color: var(--darkest);
+    border-color: var(--darkest);
+    border-radius: var(--border-radius-std);
+    border-style: solid;
+}
+
+.form-grid > button[type="submit"]:hover {
+    border-color: var(--darkest);
+    background-color: var(--dark);
+    border-style: outset
+}
+
+.form-grid > button[type="submit"]:active {
+    border-style: inset;
+    background-color: var(--med);
+    border-color: var(--dark)
+}
