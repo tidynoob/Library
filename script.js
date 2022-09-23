@@ -1,5 +1,6 @@
 // Functions ==================================================================
 
+// Book object constructor
 function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
@@ -12,16 +13,21 @@ function Book(title, author, pages, status) {
 
 }
 
+// Opens Form
 let openForm = () => {
     formWindow.classList.add('show');
 
 };
 
+
+// Closes Form
 let closeForm = () => {
     formWindow.classList.remove('show');
 
 };
 
+
+// Adds new book object to library
 let addBookToLibrary = () => {
 
     let addedBook = new Book(
@@ -35,8 +41,10 @@ let addBookToLibrary = () => {
     form.reset();
 }
 
+
+// Creates a new book card given index of book in library
 let createCard = (index) => {
-    const main = document.querySelector('.main');
+    // const main = document.querySelector('.main');
     const referenceNode = document.querySelector('.add-book-card');
 
     const newCard = document.createElement('article');
@@ -71,7 +79,9 @@ let createCard = (index) => {
 
 }
 
+// Adds a Event Listener to each Remove Button currently available
 let addRemoveEventListeners = () => {
+    let removeButtons = document.querySelectorAll('.remove-button');
     removeButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             let card = button.closest('.book-card');
@@ -82,6 +92,7 @@ let addRemoveEventListeners = () => {
     })
 }
 
+// Removes book with given index from library and deletes the card
 let removeBook = (index) => {
     let card = document.querySelector(`[data-index="${index}"]`);
     card.remove();
@@ -107,10 +118,9 @@ let main = document.querySelector('.main');
 // Functions ran at start =====================================================
 
 createCard(0);
-let removeButtons = main.querySelectorAll('.remove-button');
+addRemoveEventListeners();
 
 // Event Listeners ============================================================
-
 
 // Open form when pressing plus button
 addBookButton.addEventListener('click', openForm);
@@ -143,5 +153,3 @@ removeButtons.forEach(button => {
         removeBook(index);
     })
 })
-
-addRemoveEventListeners();
