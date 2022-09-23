@@ -136,6 +136,7 @@ table {
     --lightest: #fafafa;
 
     --shadow: 1px 1px 3px rgb(0, 0, 0, .15);
+    --hover-shadow: 3px 3px 5px rgb(0, 0, 0, .15);
     --border-radius-std: 5px;
 
     --spacing-lg: 1rem;
@@ -222,6 +223,13 @@ body {
     border-radius: var(--border-radius-std);
     padding: var(--spacing-lg);
     background-color: var(--light);
+
+    transition: all .1s ease-in-out;
+}
+
+.main>article.book-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--hover-shadow);
 }
 
 article.book-card>h2 {
@@ -294,9 +302,7 @@ article.book-card>button.remove-button:hover {
 article.add-book-card>button {
 
     display: flex;
-    /* text-align: center; */
     flex: .5;
-    /* height: 50%; */
     aspect-ratio: 1/1;
 
     border-radius: 100%;
@@ -305,7 +311,7 @@ article.add-book-card>button {
     color: var(--light);
     box-shadow: var(--shadow);
 
-    transition: transform .7s ease-in-out, background-color .7s ease-in-out, border .7s ease-in-out, box-shadow .7s ease-in-out;
+    transition: all .5s ease-in-out;
 
 }
 
@@ -313,17 +319,16 @@ article.add-book-card>button:hover {
     transform: rotate(360deg) scale(1.15);
     background-color: var(--med-light);
     border: 2px solid var(--very-dark);
-    box-shadow: 3px 3px 5px rgb(0, 0, 0, .15);
-    transition-duration: 200ms;
-    
-    /* flex: .75; */
+    box-shadow: var(--hover-shadow);
+    transition-duration: .2s;
+
 }
 
 article.add-book-card>button:active {
     transform: rotate(360deg) scale(1.15);
     background-color: var(--med);
     border: 2px solid var(--very-dark);
-    transition-duration: 000ms;
+    transition-duration: 0s;
 }
 
 article.add-book-card>button>span {
@@ -339,19 +344,35 @@ button {
 }
 
 .form-window {
-    display: none;
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: top left;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+
     position: fixed;
-    z-index: 10;
+    /* z-index: 10; */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
 
     background-color: var(--med-light);
     border: 2px solid var(--darkest);
     border-radius: var(--border-radius-std);
-    box-shadow: 3px 3px 5px rgb(0, 0, 0, .15);
+    box-shadow: var(--hover-shadow);
 
     padding: var(--spacing-lg);
+    transition: all .2s ease-in-out;
+}
+
+.form-window.show {
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: top left;
+    visibility: visible;
+    z-index: 15;
+    opacity: 1;
+    /* top: 50%;
+    left: 50%; */
+
 }
 
 .form-window .form-grid {
@@ -436,12 +457,22 @@ button {
 }
 
 .form-backdrop {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+
+}
+
+.form-window.show ~ .form-backdrop {
+    visibility: visible;
+    opacity: 1;
+    z-index: 11;
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vw;
     background-color: rgb(0,0,0,0.5);
-    z-index: 2;
+
 }
