@@ -27,18 +27,21 @@
                 <input id="pages" type="number">
                 <label for="read">Read?</label>
                 <input id="read" type="checkbox">
-                <button type="submit" id="submit-book">Submit Book</button>
+                <button id="submit-book">Submit Book</button>
             </div>
         </form>
 
     </div>
     <div class="main">
-        <article class="book-card">
+        <article class="book-card" data-index="0">
             <h2>The Hobbit</h2>
             <h3>J.R.R. Tolkien</h3>
             <p>310 pages</p>
-            <button>Read</button>
+            <button class="read-status">Read</button>
             <button class="remove-button">x</button>
+        </article>
+        <article class="add-book-card">
+            <button id="add-book"><span>+</span></button>
         </article>
     </div>
 

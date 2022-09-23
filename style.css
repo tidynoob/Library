@@ -1,25 +1,94 @@
 /* CSS Reset */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 /* article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -60,13 +129,13 @@ table {
 :root {
     --darkest: #171717;
     --very-dark: #262626;
-    --dark:#404040;
+    --dark: #404040;
     --med: #737373;
     --med-light: #a3a3a3;
     --light: #e5e5e5;
     --lightest: #fafafa;
 
-    --shadow: 1px 1px 3px rgb(0,0,0,.15);
+    --shadow: 1px 1px 3px rgb(0, 0, 0, .15);
     --border-radius-std: 5px;
 
     --spacing-lg: 1rem;
@@ -80,7 +149,9 @@ table {
     --font-md: 16px;
 
     --status-read: #bbf7d0;
+    --status-read-hover: #4ade80;
     --status-not-read: #fecaca;
+    --status-not-read: #f87171;
 
     --input-height: calc(var(--font-xl) + var(--spacing-xs) + 1px);
 
@@ -106,11 +177,11 @@ body {
     background-color: var(--lightest);
     padding: var(--spacing-xl) 0 var(--spacing-xl) var(--spacing-xl);
     z-index: 1;
-    box-shadow: 0px 3px 2px rgb(0,0,0,.10);
-    
+    box-shadow: 0px 3px 2px rgb(0, 0, 0, .10);
+
 }
 
-.header > img {
+.header>img {
     shape-rendering: geometricPrecision;
     /* filter: brightness(0) invert(1); */
     height: 85px;
@@ -118,7 +189,7 @@ body {
 
 }
 
-.header > h1 {
+.header>h1 {
     font-family: Alegreya;
     color: var(--darkest);
     letter-spacing: 3px;
@@ -129,19 +200,22 @@ body {
 .main {
     /* background-color: var(--light); */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--spacing-xl);
 
     padding: var(--spacing-xl);
 }
 
-.main > article {
+.main>article.book-card {
     position: relative;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: var(--spacing-sm);
     align-items: center;
+    overflow-wrap: break-word;
+    text-align: center;
 
     border: 2px solid var(--med);
     box-shadow: var(--shadow);
@@ -150,20 +224,22 @@ body {
     background-color: var(--light);
 }
 
-article > h2 {
+article.book-card>h2 {
     color: var(--darkest);
     font-size: var(--font-xl);
     font-weight: bold;
+
 }
 
-article > h3 {
+article.book-card>h3 {
     color: var(--darkest);
     font-size: var(--font-lg);
 }
 
-article > button {
+article.book-card>button.read-status {
     background-color: var(--status-read);
     font-size: var(--font-md);
+    letter-spacing: 1px;
     font-weight: bold;
     height: 42px;
     align-self: stretch;
@@ -172,14 +248,23 @@ article > button {
 
 }
 
-button.remove-button {
+article.book-card>button.read-status:hover {
+    background-color: var(--status-read-hover);
+
+}
+
+article.book-card>button.remove-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
 
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
+
+    font-size: var(--font-sm);
+    font-weight: bold;
 
     height: 20px;
     width: 20px;
@@ -187,19 +272,74 @@ button.remove-button {
 
 
     border-radius: 100%;
-    border: 2px solid var(--med);
-    background-color: var(--dark);
+    border: 2px solid var(--med-light);
+    background-color: var(--med);
     color: var(--light);
+}
 
+article.book-card>button.remove-button:hover {
+    border: 2px solid var(--dark);
 
 }
 
-label, button {
-    display:block;
+.main>article.add-book-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+article.add-book-card>button {
+
+    display: flex;
+    /* text-align: center; */
+    flex: .5;
+    /* height: 50%; */
+    aspect-ratio: 1/1;
+
+    border-radius: 100%;
+    border: 2px solid var(--med-light);
+    background-color: var(--med);
+    color: var(--light);
+    box-shadow: var(--shadow);
+
+    transition: transform .7s ease-in-out, background-color .7s ease-in-out, border .7s ease-in-out, box-shadow .7s ease-in-out;
+
+}
+
+article.add-book-card>button:hover {
+    transform: rotate(360deg) scale(1.15);
+    background-color: var(--med-light);
+    border: 2px solid var(--very-dark);
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, .15);
+    transition-duration: 200ms;
+    
+    /* flex: .75; */
+}
+
+article.add-book-card>button:active {
+    transform: rotate(360deg) scale(1.15);
+    background-color: var(--med);
+    border: 2px solid var(--very-dark);
+    transition-duration: 000ms;
+}
+
+article.add-book-card>button>span {
+    text-align: center;
+    margin: auto;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+label,
+button {
+    display: block;
 }
 
 .form-window {
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 10;
     top: 50%;
@@ -209,7 +349,7 @@ label, button {
     background-color: var(--med-light);
     border: 2px solid var(--darkest);
     border-radius: var(--border-radius-std);
-    box-shadow: 3px 3px 5px rgb(0,0,0,.15);
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, .15);
 
     padding: var(--spacing-lg);
 }
@@ -221,7 +361,7 @@ label, button {
     align-items: center;
 }
 
-.form-grid > h2 {
+.form-grid>h2 {
     grid-column: 1 / span 2;
 
     text-align: center;
@@ -229,18 +369,18 @@ label, button {
     font-weight: bold;
 }
 
-.form-grid > label {
+.form-grid>label {
     grid-column: 1 / span 1;
 
-    font-size:var(--font-lg);
+    font-size: var(--font-lg);
     text-align: end;
 }
 
-.form-grid > input {
+.form-grid>input {
     grid-column: 2 / span 1;
 
     font-size: var(--font-md);
-    color:var(--dark);
+    color: var(--dark);
 
     height: var(--input-height);
     width: 200px;
@@ -253,13 +393,13 @@ label, button {
     outline: none;
 }
 
-.form-grid > input:focus {
+.form-grid>input:focus {
     border: 2px solid var(--darkest);
     box-shadow: var(--shadow);
     height: calc(var(--input-height));
 }
 
-.form-grid > input[type="checkbox"] {
+.form-grid>input[type="checkbox"] {
     justify-self: start;
     height: var(--input-height);
     width: var(--input-height);
@@ -267,7 +407,7 @@ label, button {
 
 }
 
-.form-grid > button[type="submit"] {
+.form-grid>button[id="submit-book"] {
     grid-column: 1 / span 2;
 
     width: 50%;
@@ -283,13 +423,13 @@ label, button {
     border-style: solid;
 }
 
-.form-grid > button[type="submit"]:hover {
+.form-grid>button[type="submit"]:hover {
     border-color: var(--dark);
     background-color: var(--dark);
     border-style: outset
 }
 
-.form-grid > button[type="submit"]:active {
+.form-grid>button[type="submit"]:active {
     border-style: inset;
     background-color: var(--med);
     border-color: var(--dark)

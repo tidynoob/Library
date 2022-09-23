@@ -1,12 +1,34 @@
+let myLibrary = [];
+
+function Book (title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+}
+
+
 let addBookButton = document.querySelector('#add-book');
 let submitBookButton = document.querySelector('#submit-book')
 
-addBookButton.addEventListener('click', (e) => {
+let openForm = (e) => {
     let form = document.querySelector('.form-window');
     form.style.display='block';
-})
+};
 
-submitBookButton.addEventListener('click', (e) => {
+let closeForm = (e) => {
     let form = document.querySelector('.form-window');
     form.style.display='none';
-})
+};
+
+let addBook = (e) => {
+    console.log(e);
+}
+
+addBookButton.addEventListener('click', openForm);
+
+submitBookButton.addEventListener('click', (e) => {
+    console.log(e);
+    addBook(e);
+    closeForm(e);
+});
