@@ -152,7 +152,7 @@ table {
     --status-read: #bbf7d0;
     --status-read-hover: #4ade80;
     --status-not-read: #fecaca;
-    --status-not-read: #f87171;
+    --status-not-read-hover: #f87171;
 
     --input-height: calc(var(--font-xl) + var(--spacing-xs) + 1px);
 
@@ -258,6 +258,18 @@ article.book-card>button.read-status {
 
 article.book-card>button.read-status:hover {
     background-color: var(--status-read-hover);
+    border-color: var(--status-read-hover);
+
+}
+
+article.book-card>button.read-status.not-read {
+    background-color: var(--status-not-read);
+    border-color: var(--status-not-read);
+}
+
+article.book-card>button.read-status.not-read:hover {
+    background-color: var(--status-not-read-hover);
+    border-color: var(--status-not-read-hover);
 
 }
 

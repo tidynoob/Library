@@ -79,24 +79,46 @@ let createCard = (index) => {
 
 }
 
-// Adds a Event Listener to each Remove Button currently available
-let addRemoveEventListeners = () => {
+// Adds a Event Listener to each Read/Remove Button currently available
+let addEventListeners = () => {
     let removeButtons = document.querySelectorAll('.remove-button');
+    let readButtons = document.querySelectorAll('.read-status');
     removeButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            let card = button.closest('.book-card');
-            console.log(card.dataset.index);
-            let index = card.dataset.index;
-            removeBook(index);
-        })
+        button.addEventListener('click', (e) => {removeBook(button)});
     })
+    readButtons.forEach(button => {
+        button.addEventListener('click', (e) => {updateReadStatus(button)});
+    })
+
 }
 
 // Removes book with given index from library and deletes the card
-let removeBook = (index) => {
-    let card = document.querySelector(`[data-index="${index}"]`);
+let removeBook = (button) => {
+    let card = button.closest('.book-card');
+    let index = card.dataset.index;
+    // let card = document.querySelector(`[data-index="${index}"]`);
     card.remove();
     myLibrary.splice(index, 1);
+}
+
+let updateReadStatus = (button) => {
+    let card = button.closest('.book-card');
+    let index = card.dataset.index;
+
+    if (myLibrary[index].status == 'Read') {
+        myLibrary[index].status = "Haven't Read";
+    } else {
+        myLibrary[index].status = 'Read';
+    };
+
+    if (myLibrary[index].status == 'Read') {
+        button.classList.remove('not-read');
+    } else {
+        button.classList.add('not-read');
+    }
+
+    button.innerText = myLibrary[index].status;;
+
 }
 
 // Variables ==================================================================
@@ -118,7 +140,7 @@ let main = document.querySelector('.main');
 // Functions ran at start =====================================================
 
 createCard(0);
-addRemoveEventListeners();
+addEventListeners();
 
 // Event Listeners ============================================================
 
@@ -138,18 +160,6 @@ submitBookButton.addEventListener('click', (e) => {
 
     addBookToLibrary();
     createCard(index);
-    removeButtons = main.querySelectorAll('.remove-button');
-    addRemoveEventListeners();
+    addEventListeners();
     closeForm();
 });
-
-// Removes book when pressing x button on card
-removeButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-
-        let card = button.closest('.book-card');
-        // console.log(card.dataset.index);
-        let index = card.dataset.index;
-        removeBook(index);
-    })
-})
