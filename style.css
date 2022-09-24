@@ -201,7 +201,7 @@ body {
 .main {
     /* background-color: var(--light); */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: var(--spacing-xl);
 
     padding: var(--spacing-xl);
@@ -242,6 +242,7 @@ article.book-card>h2 {
 article.book-card>h3 {
     color: var(--darkest);
     font-size: var(--font-lg);
+    overflow-wrap: anywhere;
 }
 
 article.book-card>button.read-status {
@@ -253,6 +254,8 @@ article.book-card>button.read-status {
     align-self: stretch;
     border: 1px solid var(--status-read);
     border-radius: var(--border-radius-std);
+
+    margin-top: auto;
 
 }
 

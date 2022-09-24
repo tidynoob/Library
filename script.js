@@ -84,12 +84,17 @@ let addEventListeners = () => {
     let removeButtons = document.querySelectorAll('.remove-button');
     let readButtons = document.querySelectorAll('.read-status');
     removeButtons.forEach(button => {
-        button.addEventListener('click', (e) => {removeBook(button)});
-    })
+        if (!button.classList.contains('listener')) {
+            button.classList.add('listener');
+            button.addEventListener('click', (e) => { removeBook(button) });
+        }
+    });
     readButtons.forEach(button => {
-        button.addEventListener('click', (e) => {updateReadStatus(button)});
-    })
-
+        if (!button.classList.contains('listener')) {
+            button.classList.add('listener');
+            button.addEventListener('click', (e) => { updateReadStatus(button) });
+        }
+    });
 }
 
 // Removes book with given index from library and deletes the card
@@ -101,6 +106,7 @@ let removeBook = (button) => {
     myLibrary.splice(index, 1);
 }
 
+// Updates the status of the book when pressing the given button
 let updateReadStatus = (button) => {
     let card = button.closest('.book-card');
     let index = card.dataset.index;
