@@ -65,6 +65,9 @@ let createCard = (index) => {
 
     const newButton = document.createElement('button');
     newButton.classList.add('read-status');
+    if (myLibrary[index].status == "Haven't Read") {
+        newButton.classList.add('not-read');
+    }
     const newButtonText = document.createTextNode(myLibrary[index].status);
     newButton.appendChild(newButtonText);
 
