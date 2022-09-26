@@ -44,7 +44,7 @@ let addBookToLibrary = () => {
 
 // Creates a new book card given index of book in library
 let createCard = (index) => {
-    // const main = document.querySelector('.main');
+
     const referenceNode = document.querySelector('.add-book-card');
 
     const newCard = document.createElement('article');
@@ -163,7 +163,7 @@ let main = document.querySelector('.main');
 createCard(0);
 addEventListeners();
 
-// Event Listeners ============================================================
+// Standard Event Listeners ===================================================
 
 // Open form when pressing plus button
 addBookButton.addEventListener('click', openForm);
