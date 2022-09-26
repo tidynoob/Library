@@ -26,6 +26,10 @@ let closeForm = () => {
 
 };
 
+// add Commas to a number for printing
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // Adds new book object to library
 let addBookToLibrary = () => {
@@ -60,7 +64,7 @@ let createCard = (index) => {
     newH3.appendChild(h3Text);
 
     const newP = document.createElement('p');
-    const pText = document.createTextNode(myLibrary[index].pages + " pages");
+    const pText = document.createTextNode(numberWithCommas(myLibrary[index].pages) + " pages");
     newP.appendChild(pText);
 
     const newButton = document.createElement('button');
