@@ -472,16 +472,20 @@ button {
     border-style: solid;
 }
 
-.form-grid>button[type="submit"]:hover {
+.form-grid>button[id="submit-book"]:hover {
     border-color: var(--dark);
     background-color: var(--dark);
     border-style: outset
 }
 
-.form-grid>button[type="submit"]:active {
+.form-grid>button[id="submit-book"]:active {
     border-style: inset;
     background-color: var(--med);
     border-color: var(--dark)
+}
+
+.form-grid>button[type="submit"] {
+    visibility: hidden;
 }
 
 .form-backdrop {

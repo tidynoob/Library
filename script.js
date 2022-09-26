@@ -33,7 +33,7 @@ let addBookToLibrary = () => {
     let addedBook = new Book(
         form.elements['title'].value
         , form.elements['author'].value
-        , form.elements['pages'].value
+        , Math.trunc(form.elements['pages'].value)
         , form.elements['read'].checked
     );
 
@@ -176,6 +176,14 @@ window.addEventListener('click', (e) => {
 
 // Submit book and close form when clicking submit in form
 submitBookButton.addEventListener('click', (e) => {
+
+    console.log(form.checkValidity());
+
+    if(!form.checkValidity()) {
+        form.querySelector('#validate').click();
+        console.log('test');
+        return
+    }
 
     let index = myLibrary.length;
 

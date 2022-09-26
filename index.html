@@ -13,33 +13,26 @@
     <div class="header">
         <img src="./images/bookshelf.svg" alt="">
         <h1>LIBRARY</h1>
-        <!-- <button id="add-book">Add Book</button> -->
     </div>
     <div class="form-window">
         <form id="book-form">
             <div class="form-grid">
                 <h2>Book Details</h2>
                 <label for="title">Title</label>
-                <input id="title" type="text">
+                <input id="title" type="text" required>
                 <label for="author">Author</label>
-                <input id="author" type="text">
+                <input id="author" type="text" required >
                 <label for="pages">Pages</label>
-                <input id="pages" type="number">
+                <input id="pages" type="number"  min="0" step="1" pattern="[0-9]*" required>
                 <label for="read">Read?</label>
                 <input id="read" type="checkbox">
                 <button id="submit-book" type="button">Submit Book</button>
+                <button id="validate" type="submit" form="book-form"></button>
             </div>
         </form>
     </div>
     <div class="form-backdrop"></div>
     <div class="main">
-        <!-- <article class="book-card" data-index="0">
-            <h2>The Hobbit</h2>
-            <h3>J.R.R. Tolkien</h3>
-            <p>310 pages</p>
-            <button class="read-status">Read</button>
-            <button class="remove-button">x</button>
-        </article> -->
         <article class="add-book-card">
             <button id="add-book"><span>+</span></button>
         </article>
