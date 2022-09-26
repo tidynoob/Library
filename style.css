@@ -325,6 +325,8 @@ article.book-card>button.remove-button:hover {
     align-items: center;
     justify-content: center;
     padding: var(--spacing-lg);
+    min-height: 190px;
+    box-sizing: border-box;
 }
 
 article.add-book-card>button {
