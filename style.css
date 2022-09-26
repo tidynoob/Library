@@ -223,13 +223,26 @@ body {
     border-radius: var(--border-radius-std);
     padding: var(--spacing-lg);
     background-color: var(--light);
+    transform: scale(1);
 
     transition: all .1s ease-in-out;
+}
+
+.main>article.book-card.creation {
+    transform: scale(1);
+    transition: all .3s ease-in-out;
+}
+
+.main>article.book-card.faded, .main>article.book-card.faded:hover {
+    /* opacity: 0; */
+    transform: scale(0);
+    transition: all .3s ease-in-out;
 }
 
 .main>article.book-card:hover {
     transform: scale(1.02);
     box-shadow: var(--hover-shadow);
+    transition: all .1s ease-in-out;
 }
 
 article.book-card>h2 {

@@ -48,7 +48,7 @@ let createCard = (index) => {
     const referenceNode = document.querySelector('.add-book-card');
 
     const newCard = document.createElement('article');
-    newCard.classList.add('book-card');
+    newCard.classList.add('book-card','faded','creation');
     newCard.dataset.index = index;
 
     const newH2 = document.createElement('h2');
@@ -80,6 +80,14 @@ let createCard = (index) => {
 
     main.insertBefore(newCard, referenceNode);
 
+    newCard.addEventListener('transitionend', () => {
+        newCard.classList.remove('creation');
+    });
+
+    requestAnimationFrame(() => {
+        newCard.classList.remove('faded');
+    });
+
 }
 
 // Adds a Event Listener to each Read/Remove Button currently available
@@ -104,8 +112,12 @@ let addEventListeners = () => {
 let removeBook = (button) => {
     let card = button.closest('.book-card');
     let index = card.dataset.index;
-    // let card = document.querySelector(`[data-index="${index}"]`);
-    card.remove();
+
+    card.addEventListener('transitionend', () => {
+        card.remove();
+    });
+    card.classList.add('faded');
+
     myLibrary.splice(index, 1);
 }
 
