@@ -1,16 +1,18 @@
 // Functions ==================================================================
 
 // Book object constructor
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    if (status) {
-        this.status = 'Read'
-    } else {
-        this.status = "Haven't Read"
-    };
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        if (status) {
+            this.status = 'Read';
+        } else {
+            this.status = "Haven't Read";
+        };
 
+    }
 }
 
 // Opens Form
