@@ -2,18 +2,15 @@
 
 // Book object constructor
 class Book {
+
     constructor(title, author, pages, status) {
         this.title = title;
         this.author = author;
         this.pages = pages;
-        if (status) {
-            this.status = 'Read';
-        } else {
-            this.status = "Haven't Read";
-        };
-
+        this.status = status ? "Read" : "Haven't Read"
     }
 }
+
 
 // Opens Form
 let openForm = () => {
@@ -54,7 +51,7 @@ let createCard = (index) => {
     const referenceNode = document.querySelector('.add-book-card');
 
     const newCard = document.createElement('article');
-    newCard.classList.add('book-card','faded','creation');
+    newCard.classList.add('book-card', 'faded', 'creation');
     newCard.dataset.index = index;
 
     const newH2 = document.createElement('h2');
@@ -144,7 +141,7 @@ let updateReadStatus = (button) => {
         button.classList.add('not-read');
     }
 
-    button.innerText = myLibrary[index].status;;
+    button.innerText = myLibrary[index].status;
 
 }
 
@@ -185,7 +182,7 @@ submitBookButton.addEventListener('click', (e) => {
 
     console.log(form.checkValidity());
 
-    if(!form.checkValidity()) {
+    if (!form.checkValidity()) {
         form.querySelector('#validate').click();
         console.log('test');
         return
